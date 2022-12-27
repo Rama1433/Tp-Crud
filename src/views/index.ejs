@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('partials/head', {title: 'Inicio'}) %>
+<body>
+	<%- include('partials/headerNavbar') %>
+	<div class="banner"></div>
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Basado en tu última visita</h2>
+			</div>
+			<% productsVisited.forEach(({id,name,price,image,discount}) => { %> 
+					<%- include('./partials/product', {
+						id,
+						name,
+						price,
+						image,
+						discount,
+						toThousand
+					})  %>
+				<% }) %>
+		</div>
+	</div>
+
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Ofertas</h2>
+			</div>
+			<% productsInSale.forEach(({id,name,price,image,discount}) => { %> 
+				<%- include('./partials/product', {
+						id,
+						name,
+						price,
+						image,
+						discount,
+						toThousand
+				})  %>
+			<% }) %>	
+		</div>
+	</div>
+
+	<%- include('partials/footer') %>
+</body>	
+</html>
